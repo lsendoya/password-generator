@@ -3,7 +3,7 @@ import { InputPaste } from "./Input/Paste";
 import { ProgressBar } from "./Progress/Bar";
 
 export function Header({ passwordState }) {
-  const { password, length, setlength } = passwordState;
+  const { password, length, setLength } = passwordState;
   return (
     <VStack w="100%" h="auto" px="1" py="5px">
       <InputPaste pass={password} />
@@ -20,7 +20,7 @@ export function Header({ passwordState }) {
           {length}
         </Text>
       </HStack>
-      <ProgressBar setlength={setlength} />
+      <ProgressBar setlength={setLength} />
     </VStack>
   );
 }

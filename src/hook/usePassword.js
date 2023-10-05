@@ -1,4 +1,4 @@
-import { random } from "../components/helper/randon";
+import { generateRandomPassword } from "../components/helper/randon";
 
 export const usePassword = (useBoolean, useState) => {
   const [special, toggleSpecial] = useBoolean(false);
@@ -40,7 +40,7 @@ export const usePassword = (useBoolean, useState) => {
       });
     } else {
       setClick.off();
-      setPassword(random(length, upper, lower, numeric, special));
+      setPassword(generateRandomPassword(length, upper, lower, numeric, special));
       setClick.on();
     }
   };

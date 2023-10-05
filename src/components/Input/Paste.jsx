@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   HStack,
   useClipboard,
@@ -10,8 +10,8 @@ import {
 import { CopyIcon } from "@chakra-ui/icons";
 
 export function InputPaste({ pass }) {
-  const { setValue, value, onCopy } = useClipboard(pass);
-  const [iconClicked, setIconClicked] = useState(false);
+  const { setValue, onCopy } = useClipboard(pass);
+  const [setIconClicked] = useState(false);
 
   const handlePaste = (e) => {
     setValue(e.target.value);
@@ -26,8 +26,6 @@ export function InputPaste({ pass }) {
     <HStack
       w="90%"
       h="2rem"
-      alignItems="center"
-      justify="space-between"
       bg="red.100"
       px="0.1rem"
       borderRadius="md"
@@ -37,10 +35,12 @@ export function InputPaste({ pass }) {
       _hover={{
         borderColor: "teal.300",
       }}
+      overflowY={"hidden"}
+      alignItems={"stretch"}
+      justifyItems={"stretch"}
     >
       <InputGroup h="auto" w="100%">
         <Input
-          w="100%"
           pointerEvents="none"
           color="black.300"
           fontSize="1.1em"
@@ -51,18 +51,12 @@ export function InputPaste({ pass }) {
           variant="unstyled"
           onChange={handlePaste}
         />
-        <InputRightElement h={'1.9rem'}> 
+        <InputRightElement>
           <IconButton
+            variant={"solid"}
             onClick={handleIconClick}
             icon={<CopyIcon />}
-            size="md"
-            colorScheme={iconClicked ? "green" : "teal"}
             rounded="none"
-            h="100%"
-            _hover={{
-              background: "teal.400",
-            }}
-            overflow="hidden"
           />
         </InputRightElement>
       </InputGroup>
